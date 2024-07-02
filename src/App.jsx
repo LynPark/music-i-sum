@@ -1,7 +1,12 @@
 import "./App.css";
+import GptTest from "./GptTest";
 
 function App() {
-  return <></>;
+  return (
+    <>
+      <GptTest />
+    </>
+  );
 }
 
 export default App;
