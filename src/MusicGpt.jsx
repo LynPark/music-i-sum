@@ -20,7 +20,8 @@ const MusicGpt = () => {
           temperature: 0.5,
           max_tokens: 200,
         });
-        const [title, singer] = answer.choices[0].message.content.split("by");
+        const [title0, singer] = answer.choices[0].message.content.split("by");
+        const title = title0.replace(/"/g, "");
         setMusic({ title, singer });
       } catch (err) {
         setError(err.message);
@@ -30,6 +31,9 @@ const MusicGpt = () => {
   }, []);
 
   const { title, singer } = music;
+  {
+    title ? console.log(music) : "";
+  }
 
   return (
     <>
