@@ -4,8 +4,6 @@ import OpenAI from "openai";
 const GptPrompt = () => {
   const [response, setResponse] = useState(null);
   const [prompt, setPrompt] = useState("");
-  const [temp, setTemp] = useState(0.0);
-  const [mxTokens, setMxTokens] = useState(50);
   const [loading, setLoading] = useState(false);
   const openai = new OpenAI({
     apiKey: import.meta.env.VITE_APP_OPENAI_API_KEY,
@@ -19,8 +17,8 @@ const GptPrompt = () => {
       const result = await openai.chat.completions.create({
         messages: [{ role: "user", content: prompt }],
         model: "gpt-3.5-turbo",
-        temperature: parseFloat(temp),
-        max_tokens: parseInt(mxTokens),
+        temperature: 0.5,
+        max_tokens: 200,
       });
       const message = result.choices[0].message.content;
       setResponse(message);
@@ -41,32 +39,7 @@ const GptPrompt = () => {
             placeholder="질문을 입력하세요."
             onChange={(e) => setPrompt(e.target.value)}
             style={{
-              width: "500px",
-            }}
-          />
-          <br />
-          <span> t </span>
-          <input
-            type="number"
-            min="0.0"
-            max="2.0"
-            step="0.1"
-            value={temp}
-            onChange={(e) => setTemp(e.target.value)}
-            style={{
-              width: "50px",
-            }}
-          />
-          <span> mx </span>
-          <input
-            type="number"
-            min="50"
-            max="300"
-            step="50"
-            value={mxTokens}
-            onChange={(e) => setMxTokens(e.target.value)}
-            style={{
-              width: "50px",
+              width: "400px",
             }}
           />
           <button
