@@ -1,5 +1,5 @@
 import "./App.css";
-import MusicGpt from "./MusicGpt";
+import MusicGpt from "./testfiles/MusicGpt";
 
 function App() {
   return (
