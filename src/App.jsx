@@ -1,10 +1,10 @@
 import "./App.css";
-import GptTest from "./GptTest";
+import GptPrompt from "./GptPrompt";
 
 function App() {
   return (
     <>
-      <GptTest />
+      <GptPrompt />
     </>
   );
 }
