@@ -1,12 +1,11 @@
 import "./App.css";
-import MusicGpt from "./testfiles/MusicGpt";
+import XmlToJsonTest from "./testfiles/XmlToJsonTest";
 
 function App() {
   return (
-    <>
-      <MusicGpt />
-    </>
+    <div className="App">
+      <XmlToJsonTest />
+    </div>
   );
 }
-
 export default App;
