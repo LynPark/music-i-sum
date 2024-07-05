@@ -1,8 +1,7 @@
 import { useState, useEffect } from "react";
 import OpenAI from "openai";
 
-const MusicGpt = () => {
-  const [result, setResult] = useState([]);
+const Recommend = ({ setRecommendations }) => {
   const [error, setError] = useState(null);
   const [theme, setTheme] = useState("");
   const [details, setDetails] = useState("");
@@ -13,7 +12,7 @@ const MusicGpt = () => {
   const handleSubmit = (e) => {
     e.preventDefault();
     const f =
-      '답변은 다음과 같은 json 형식을 따라야 함 { "idx": , "artistName":"", "songName":"", } 양쪽 대괄호는 빼고 출력';
+      '답변은 다음과 같은 json 형식을 따라야 함 { "trackId": , "artistName":"", "trackName":"", } 양쪽 대괄호는 빼고 출력';
     const query = `${theme} ${details} 노래를 ${songNum}곡 추천해 줘!`;
     setQuestion(query);
     setSearchQ(query + f);
@@ -21,7 +20,7 @@ const MusicGpt = () => {
 
   useEffect(() => {
     const fetchResponse = async () => {
-      if (!searchQ) return; // searchQ가 비어있으면 실행하지 않음
+      if (!searchQ) return;
 
       try {
         const openai = new OpenAI({
@@ -38,7 +37,6 @@ const MusicGpt = () => {
         const content = answer.choices[0].message.content;
         console.log("OpenAI 응답:", content);
 
-        // JSON 형식에 맞게 응답 내용 파싱
         const jsonResponse = content
           .trim()
           .split("\n")
@@ -48,15 +46,13 @@ const MusicGpt = () => {
           })
           .filter((item) => item !== null);
 
-        setResult(jsonResponse);
+        setRecommendations(jsonResponse);
       } catch (error) {
         setError(error.message);
       }
     };
     fetchResponse();
-  }, [searchQ]);
-
-  console.log(result);
+  }, [searchQ, setRecommendations]);
 
   return (
     <>
@@ -79,6 +75,7 @@ const MusicGpt = () => {
             type="number"
             value={songNum}
             onChange={(e) => setSongNum(e.target.value)}
+            style={{ width: "30px" }}
           />
           곡 추천해 줘!
           <button
@@ -90,21 +87,9 @@ const MusicGpt = () => {
           </button>
         </form>
       </div>
-      {searchQ && <h3 style={{ marginTop: "10px" }}>{question}</h3>}
-      <div>
-        <ul>
-          {result.map((track) => (
-            <li key={track.idx}>
-              <p>
-                {track.songName} - {track.artistName}
-              </p>
-            </li>
-          ))}
-        </ul>
-      </div>
       {error && <h1>Error: {error}</h1>}
     </>
   );
 };
 
-export default MusicGpt;
+export default Recommend;

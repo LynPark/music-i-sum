@@ -1,11 +1,14 @@
+import { useState } from "react";
 import "./App.css";
-import ItunesAPITest from "./testfiles/ItunesAPITest";
-import MusicGpt from "./testfiles/MusicGpt";
+import ItunesMusic from "./components/ItunesMusic";
+import Recommend from "./components/Recommend";
 
 function App() {
+  const [recommendations, setRecommendations] = useState([]);
   return (
     <div className="App">
-      <MusicGpt />
+      <Recommend setRecommendations={setRecommendations} />
+      <ItunesMusic recommendations={recommendations} />
     </div>
   );
 }
