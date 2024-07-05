@@ -1,10 +1,10 @@
 import "./App.css";
-import XmlToJsonTest from "./testfiles/XmlToJsonTest";
+import ItunesAPITest from "./testfiles/ItunesAPITest";
 
 function App() {
   return (
     <div className="App">
-      <XmlToJsonTest />
+      <ItunesAPITest />
     </div>
   );
 }
