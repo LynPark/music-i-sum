@@ -10,7 +10,6 @@ function UserProfile() {
         <>
           <h2>{user.displayName}</h2>
           <p>{user.email}</p>
-          <button onClick={logout}>Logout</button>
         </>
       )}
     </div>

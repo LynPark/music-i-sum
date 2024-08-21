@@ -1,13 +1,16 @@
 import React from "react";
 import UserProfile from "../components/Mypage/UserProfile";
-import SongList from "../components/Mypage/SongList";
+import MyRatings from "./MyRatings";
+import { Link } from "react-router-dom";
+// import SongList from "../components/Mypage/SongList";
 
 function Mypage() {
   return (
     <div>
       <h1>My Page</h1>
       <UserProfile />
-      <SongList />
+      {/* <SongList /> */}
+      <Link to="/mypage/ratings">My Ratings</Link>
     </div>
   );
 }

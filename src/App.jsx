@@ -8,6 +8,7 @@ import NotFound from "./pages/NotFound";
 import Header from "./components/Layout/Header";
 import Footer from "./components/Layout/Footer";
 import PrivateRoute from "./components/PrivateRoute";
+import MyRatings from "./pages/MyRatings";
 
 function App() {
   return (
@@ -29,6 +30,14 @@ function App() {
           element={
             <PrivateRoute>
               <Mypage />
+            </PrivateRoute>
+          }
+        />
+        <Route
+          path="/mypage/ratings"
+          element={
+            <PrivateRoute>
+              <MyRatings />
             </PrivateRoute>
           }
         />
