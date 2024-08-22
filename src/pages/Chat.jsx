@@ -1,5 +1,4 @@
 import React from "react";
-import Chatbot from "../components/Chat/Chatbot";
 import { ChatRoom } from "../components/Chat/ChatRoom";
 import "../components/Chat/ChatRoom.css";
 
