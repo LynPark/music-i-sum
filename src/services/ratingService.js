@@ -1,4 +1,4 @@
-import { db, setDoc, doc, deleteDoc } from './Firebase';
+import { db, setDoc, doc, deleteDoc } from './firebase';
 import axios from 'axios';
 
 export const fetchSongDetails = async (songId) => {
