@@ -13,6 +13,11 @@ function MusicSearch({ userId }) {
     setResults(musicResults);
   };
 
+  const handleReset = () => {
+    setQuery("");
+    setResults([]);
+  }
+
   return (
     <Container maxWidth="md" sx={{ marginTop: 4 }}>
       <Typography variant="h4" style={{ marginBottom: "20px" }}>
@@ -29,7 +34,7 @@ function MusicSearch({ userId }) {
             style={{ background: "white" }}
           />
         </Grid>
-        <Grid item xs={4}>
+        <Grid item xs={2}>
           <Button
             variant="contained"
             onClick={handleSearch}
@@ -38,6 +43,16 @@ function MusicSearch({ userId }) {
             style={{ background: "#324099" }}
           >
             Search
+          </Button>
+        </Grid>
+        <Grid item xs={2}>
+          <Button
+          variant="outlined"
+          onClick={handleReset}
+          fullWidth
+          sx={{ height: "100%" }}
+          style={{ color: "#324099", borderColor: "#324099" }}>
+            Reset
           </Button>
         </Grid>
       </Grid>
