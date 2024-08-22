@@ -19,11 +19,11 @@ function RatingStars({ songId, userId, initialRating, onRatingChange }) {
       if (newValue === value) {
         setValue(null); // 동일한 별점을 클릭하면 삭제
         await deleteRating(userId, songId); // Firestore에서 별점 삭제
-        onRatingChange(null);
+        onRatingChange && onRatingChange(null); // onRatingChange 함수가 있을 때만 호출
       } else {
         setValue(newValue); // 새 별점 설정
-        await saveRating(userId, songId, newValue); // Firestore에 별점 저장
-        onRatingChange(newValue);
+        await saveRating(userId, songId, newValue); // Firestore에 별점 저장 (iTunes API에서 정보 가져오기)
+        onRatingChange && onRatingChange(newValue); // onRatingChange 함수가 있을 때만 호출
       }
     } catch (error) {
       console.error("Error handling rating change:", error);
