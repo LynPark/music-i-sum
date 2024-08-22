@@ -8,8 +8,17 @@ import {
   orderBy,
   getDocs,
 } from "../services/firebase";
-import { Card, CardContent, CardMedia, Typography, Box, Container, Grid } from "@mui/material";
+import {
+  Card,
+  CardContent,
+  CardMedia,
+  Typography,
+  Box,
+  Container,
+  Grid,
+} from "@mui/material";
 import RatingStars from "../components/Music/RatingStars";
+import UserProfile from "../components/MyPage/UserProfile";
 
 function MyRatings() {
   const { user } = useAuth();
@@ -27,12 +36,13 @@ function MyRatings() {
         const querySnapshot = await getDocs(q);
         const ratingsData = querySnapshot.docs.map((doc) => {
           const data = doc.data();
-          console.log("Fetched data:", data);  // 여기서 데이터를 확인합니다.
+          console.log("Fetched data:", data);
           return {
             ...data,
-            songName: data.songName || 'Unknown Song',
-            artistName: data.artistName || 'Unknown Artist',
-            albumCoverUrl: data.albumCoverUrl || 'https://via.placeholder.com/100',
+            songName: data.songName || "Unknown Song",
+            artistName: data.artistName || "Unknown Artist",
+            albumCoverUrl:
+              data.albumCoverUrl || "https://via.placeholder.com/100",
           };
         });
         setRatings(ratingsData);
@@ -43,10 +53,14 @@ function MyRatings() {
 
   return (
     <Container maxWidth="md" sx={{ marginTop: 4 }}>
+      <UserProfile />
       <Typography variant="h4" component="h1" gutterBottom>
         My Rated Songs
       </Typography>
-      <select onChange={(e) => setSortOrder(e.target.value)} style={{ marginBottom: '20px' }}>
+      <select
+        onChange={(e) => setSortOrder(e.target.value)}
+        style={{ marginBottom: "20px" }}
+      >
         <option value="timestamp">평가순</option>
         <option value="rating">별점순</option>
       </select>
@@ -57,15 +71,23 @@ function MyRatings() {
               <CardMedia
                 component="img"
                 sx={{ width: 100 }}
-                image={rating.albumCoverUrl || "https://via.placeholder.com/100"}
+                image={
+                  rating.albumCoverUrl || "https://via.placeholder.com/100"
+                }
                 alt={rating.songName}
               />
-              <Box sx={{ display: "flex", flexDirection: "column", flexGrow: 1 }}>
+              <Box
+                sx={{ display: "flex", flexDirection: "column", flexGrow: 1 }}
+              >
                 <CardContent>
                   <Typography component="div" variant="h6">
                     {rating.songName}
                   </Typography>
-                  <Typography variant="subtitle1" color="text.secondary" component="div">
+                  <Typography
+                    variant="subtitle1"
+                    color="text.secondary"
+                    component="div"
+                  >
                     {rating.artistName}
                   </Typography>
                   <RatingStars

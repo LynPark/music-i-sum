@@ -10,7 +10,7 @@
 
 .chatroom-main {
   padding: 10px;
-  height: 700px; /* 높이 조정 */
+  height: 50vh; /* 높이 조정 */
   margin: 20px 0;
   overflow-y: auto;
   display: flex;

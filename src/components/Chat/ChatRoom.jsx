@@ -134,7 +134,8 @@ export function ChatRoom() {
   };
 
   return (
-    <div className="chatroom-container">  {/* 모달 같은 스타일을 적용할 수 있는 컨테이너 */}
+    <div className="chatroom-container"> 
+    <h2 style={{ color: "navy", marginTop: "-5px"}}>AI 대화형 음악 추천</h2>
       <main className="chatroom-main">
         {messages.map((msg, idx) => (
           <ChatMessage key={idx} message={msg} />

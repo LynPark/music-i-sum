@@ -15,41 +15,54 @@ export default function Header() {
 
   return (
     <Box sx={{ flexGrow: 1 }}>
-      <AppBar position="static" style={{ height: "75px", justifyContent: 'center' }}>
-        <Toolbar sx={{ justifyContent: "space-between" }}>
-          <Typography
-            variant="h5"
-            component={Link}
-            to="/"
-            sx={{ textDecoration: "none", color: "white" }}
-          >
-            MUSIC I SUM
-          </Typography>
-
-          {user && (
-            <Button
+      <AppBar
+        position="static"
+        style={{
+          height: "75px",
+          justifyContent: "center",
+          paddingLeft: "20px",
+          paddingRight: "20px",
+          backgroundColor: "#324099",
+        }}
+      >
+        <Toolbar sx={{ justifyContent: "space-between", alignItems: "center" }}>
+        <div style={{ display: "flex", alignItems: "center" }}>
+            <Typography
+              variant="h5"
               component={Link}
-              to="/chat"
-              color="inherit"
-              sx={{ textTransform: "none" }}
-              style={{ fontSize: "20px" }}
+              to="/"
+              sx={{ textDecoration: "none", color: "white", fontWeight: "550" }}
             >
-              Chat
-            </Button>
-          )}
+              MUSIC I SUM
+            </Typography>
 
-          {user && (
-            <Button
-              component={Link}
-              to="/mypage"
-              color="inherit"
-              sx={{ textTransform: "none" }}
-              style={{ fontSize: "20px" }}
-            >
-              My Page
-            </Button>
-          )}
-          {user ? <LogoutButton /> : <GoogleLoginButton />}
+            {user && (
+              <Button
+                component={Link}
+                to="/chat"
+                color="inherit"
+                sx={{ textTransform: "none" }}
+                style={{ fontSize: "25px", marginLeft: "30px" }}
+              >
+                Chat
+              </Button>
+            )}
+          </div>
+
+          <div style={{ display: "flex", alignItems: "center" }}>
+            {user && (
+              <Button
+                component={Link}
+                to="/mypage"
+                color="inherit"
+                sx={{ textTransform: "none" }}
+                style={{ fontSize: "20px", marginRight: "20px" }}
+              >
+                My Page
+              </Button>
+            )}
+            {user ? <LogoutButton /> : <GoogleLoginButton />}
+          </div>
         </Toolbar>
       </AppBar>
     </Box>

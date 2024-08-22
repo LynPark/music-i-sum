@@ -7,7 +7,6 @@ function Search() {
   const [user] = useAuthState(auth);
   return (
     <div className="mp">
-      <h1>Search Music</h1>
       <MusicSearch userId={user?.uid} />
     </div>
   );

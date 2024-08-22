@@ -10,7 +10,21 @@ function LogoutButton() {
       console.log(error);
     }
   };
-  return <button onClick={logout}>로그아웃</button>;
+  return (
+    <button
+      onClick={logout}
+      style={{
+        background: "white",
+        border: "none",
+        fontSize: "20px",
+        color: "#324099",
+        borderRadius: "5px",
+        height: "30px"
+      }}
+    >
+      LogOut
+    </button>
+  );
 }
 
 export default LogoutButton;
