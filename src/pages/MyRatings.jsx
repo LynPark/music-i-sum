@@ -8,6 +8,8 @@ import {
   orderBy,
   getDocs,
 } from "../services/Firebase";
+import { Card, CardContent, CardMedia, Typography, Box, Container, Grid } from "@mui/material";
+import RatingStars from "../components/Music/RatingStars";
 
 function MyRatings() {
   const { user } = useAuth();
@@ -24,6 +26,7 @@ function MyRatings() {
         );
         const querySnapshot = await getDocs(q);
         const ratingsData = querySnapshot.docs.map((doc) => doc.data());
+        console.log('Fetched Ratings Data:', ratingsData); // 여기서 데이터 확인
         setRatings(ratingsData);
       }
     };
@@ -31,22 +34,47 @@ function MyRatings() {
   }, [user, sortOrder]);
 
   return (
-    <div className="mp">
-      <h1>My Rated Songs</h1>
-      <select onChange={(e) => setSortOrder(e.target.value)}>
+    <Container maxWidth="md" sx={{ marginTop: 4 }}>
+      <Typography variant="h4" component="h1" gutterBottom>
+        My Rated Songs
+      </Typography>
+      <select onChange={(e) => setSortOrder(e.target.value)} style={{ marginBottom: '20px' }}>
         <option value="timestamp">평가순</option>
         <option value="rating">별점순</option>
       </select>
-      <ul>
+      <Grid container spacing={2}>
         {ratings.map((rating, index) => (
-          <li key={index}>
-            <p>
-              {rating.songId} - Rated: {rating.rating} stars
-            </p>
-          </li>
+          <Grid item xs={12} key={index}>
+            <Card sx={{ display: "flex", alignItems: "center" }}>
+              <CardMedia
+                component="img"
+                sx={{ width: 100 }}
+                image={rating.albumCoverUrl || "https://via.placeholder.com/100"}
+                alt={rating.songName}
+              />
+              <Box sx={{ display: "flex", flexDirection: "column", flexGrow: 1 }}>
+                <CardContent>
+                  <Typography component="div" variant="h6">
+                    {rating.songName || 'Unknown Song'}
+                  </Typography>
+                  <Typography variant="subtitle1" color="text.secondary" component="div">
+                    {rating.artistName || 'Unknown Artist'}
+                  </Typography>
+                  <RatingStars
+                    songId={rating.songId}
+                    userId={user.uid}
+                    initialRating={rating.rating}
+                    songName={rating.songName}
+                    artistName={rating.artistName}
+                    albumCoverUrl={rating.albumCoverUrl}
+                  />
+                </CardContent>
+              </Box>
+            </Card>
+          </Grid>
         ))}
-      </ul>
-    </div>
+      </Grid>
+    </Container>
   );
 }
 
