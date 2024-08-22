@@ -10,7 +10,7 @@ function Mypage() {
       <h1>My Page</h1>
       <UserProfile />
       {/* <SongList /> */}
-      <Link to="/mypage/ratings">My Ratings</Link>
+      <MyRatings/>
     </div>
   );
 }

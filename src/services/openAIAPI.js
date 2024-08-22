@@ -9,6 +9,7 @@ export const getAIResponse = async (input) => {
       prompt: input,
       model: "gpt-4o-mini",
       max_tokens: 500,
+      temperature: 0.7,
     }, {
       headers: {
         'Authorization': `Bearer ${apiKey}`,

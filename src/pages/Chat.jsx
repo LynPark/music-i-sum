@@ -1,11 +1,17 @@
 import React from "react";
 import Chatbot from "../components/Chat/Chatbot";
+import { ChatRoom } from "../components/Chat/ChatRoom";
+import "../components/Chat/ChatRoom.css";
 
 function Chat() {
   return (
-    <div className="mp">
-      <h1>Chat with our AI</h1>
-      <Chatbot />
+    <div className="chatroom mp">
+      <header>
+        <h1>AI 대화형 음악 추천</h1>
+      </header>
+      <section>
+        <ChatRoom />
+      </section>
     </div>
   );
 }

@@ -1,0 +1,105 @@
+.chatroom-container {
+  background-color: rgba(228, 237, 255, 0.8); /* 반투명 배경 */
+  border-radius: 15px; /* 둥근 모서리 */
+  box-shadow: 0px 4px 15px rgba(0, 0, 0, 0.5); /* 그림자 효과 */
+  padding: 20px;
+  max-width: 728px;
+  margin: 50px auto;
+  color: white;
+}
+
+.chatroom-main {
+  padding: 10px;
+  height: 700px; /* 높이 조정 */
+  margin: 20px 0;
+  overflow-y: auto;
+  display: flex;
+  flex-direction: column;
+  background-color: #ffffff; /* 대화창 배경색 */
+  border-radius: 10px; /* 둥근 모서리 */
+}
+
+.chatroom-main::-webkit-scrollbar {
+  width: 0.25rem;
+}
+
+.chatroom-main::-webkit-scrollbar-track {
+  background: transparent;
+}
+
+.chatroom-main::-webkit-scrollbar-thumb {
+  background: rgb(255, 255, 255);
+}
+
+.chatroom-form {
+  display: flex;
+  padding: 10px;
+  border-radius: 10px;
+  background-color: #ffffff; /* 입력창 배경색 */
+}
+
+.chatroom-input {
+  line-height: 1.5;
+  width: 80%;
+  font-size: 1rem;
+  background: #ddd;
+  color: rgb(0, 0, 0);
+  outline: none;
+  border: none;
+  padding: 10px;
+  border-radius: 5px;
+}
+
+.chatroom-button {
+  width: 20%;
+  background-color: #57607e;
+  color: white;
+  border: none;
+  padding: 10px;
+  margin-left: 10px;
+  border-radius: 5px;
+  cursor: pointer;
+}
+
+.chatroom-button:disabled {
+  opacity: 0.5;
+  cursor: not-allowed;
+}
+
+.message {
+  display: flex;
+  align-items: center;
+  margin: 5px 0;
+}
+
+.sent {
+  justify-content: flex-end;
+}
+
+.sent p {
+  background: #7aa6ff;
+  color: white;
+  align-self: flex-end;
+  text-align: right;
+  border-radius: 15px 15px 0 15px; /* 말풍선 모양 */
+  padding: 10px;
+}
+
+.received {
+  justify-content: flex-start;
+}
+
+.received p {
+  background: rgb(240, 240, 240);
+  color: black;
+  text-align: left;
+  border-radius: 15px 15px 15px 0; /* 말풍선 모양 */
+  padding: 10px;
+}
+
+p {
+  max-width: 500px;
+  line-height: 24px;
+  word-wrap: break-word;
+  position: relative;
+}
