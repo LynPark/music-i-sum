@@ -1,6 +1,6 @@
 import React from "react";
 import { signOut } from "firebase/auth";
-import { auth } from "../../services/Firebase";
+import { auth } from "../../services/firebase";
 
 function LogoutButton() {
   const logout = async () => {
