@@ -10,6 +10,9 @@
     "preview": "vite preview",
     "serve": "vite preview"
   },
+  "proxy":
+    "https://music-i-sum.netlify.app/"
+  ,
   "dependencies": {
     "@emotion/react": "^11.13.0",
     "@emotion/styled": "^11.13.0",
