@@ -1,6 +1,6 @@
 import { useContext, useEffect } from 'react';
 import { AuthContext } from '../context/AuthContext';
-import { auth, googleProvider } from '../services/Firebase';
+import { auth, googleProvider } from '../services/firebase';
 import { signInWithPopup, signOut } from 'firebase/auth';
 
 export function useAuth() {

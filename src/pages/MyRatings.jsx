@@ -7,7 +7,7 @@ import {
   where,
   orderBy,
   getDocs,
-} from "../services/Firebase";
+} from "../services/firebase";
 import { Card, CardContent, CardMedia, Typography, Box, Container, Grid } from "@mui/material";
 import RatingStars from "../components/Music/RatingStars";
 

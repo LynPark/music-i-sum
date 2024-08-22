@@ -1,7 +1,7 @@
 import React, { useEffect, useState } from "react";
 import { Card, CardContent, CardMedia, Typography, Box } from "@mui/material";
 import RatingStars from "./RatingStars";
-import { db } from "../../services/Firebase";
+import { db } from "../../services/firebase";
 import { doc, getDoc } from "firebase/firestore";
 
 function MusicCard({ music, userId }) {
