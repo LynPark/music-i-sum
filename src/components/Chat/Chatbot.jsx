@@ -1,5 +1,5 @@
 import React, { useState } from "react";
-import { getAIResponse } from "../../services/OpenAIApi";
+import { getAIResponse } from "../../services/OpenAIAPI";
 
 function Chatbot() {
   const [messages, setMessages] = useState([]);
