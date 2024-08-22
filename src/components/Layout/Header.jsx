@@ -7,7 +7,7 @@ import Button from "@mui/material/Button";
 import { Link } from "react-router-dom";
 import { useAuthState } from "react-firebase-hooks/auth";
 import GoogleLoginButton from "../Auth/GoogleLoginButton";
-import { auth } from "../../services/Firebase";
+import { auth } from "../../services/firebase";
 import LogoutButton from "../Auth/LogoutButton";
 
 export default function Header() {
