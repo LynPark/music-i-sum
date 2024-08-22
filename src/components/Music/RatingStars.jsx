@@ -1,45 +1,43 @@
-import React, { useState } from 'react';
-import { Rating } from '@mui/material';
-import { useAuth } from '../../hooks/useAuth';
-import { saveRating } from '../../services/ratingService';
+import React, { useState, useEffect } from "react";
+import { Rating } from "@mui/material";
+import { saveRating, deleteRating } from "../../services/ratingService";
 
-function RatingStars({ songId }) {
-    const [value, setValue] = useState(0);
-    const { user } = useAuth();
+function RatingStars({ songId, userId, initialRating, onRatingChange }) {
+  const [value, setValue] = useState(initialRating);
 
-    const handleRatingChange = async (newValue) => {
-        if (user) {
-            if (!songId) {
-                console.error('songId is undefined');
-                return;
-            }
-            setValue(newValue);
-            try {
-                await saveRating(user.uid, songId, newValue);
-                console.log('Rating saved successfully!');
-            } catch (error) {
-                console.error('Failed to save rating', error);
-            }
-        }
-    };
+  useEffect(() => {
+    setValue(initialRating); // 초기 별점 설정
+  }, [initialRating]);
 
-    const handleClick = () => {
-        if (!user) {
-            alert("로그인이 필요합니다.");
-        }
-    };
+  const handleRatingChange = async (newValue) => {
+    try {
+      if (!userId) {
+        console.error("userId is undefined in RatingStars");
+        return;
+      }
 
-    return (
-        <div onClick={handleClick} style={{ display: 'inline-block' }}>
-            <Rating
-                name="half-rating"
-                value={value}
-                precision={0.5}
-                onChange={(event, newValue) => handleRatingChange(newValue)}
-                readOnly={!user}
-            />
-        </div>
-    );
+      if (newValue === value) {
+        setValue(null); // 동일한 별점을 클릭하면 삭제
+        await deleteRating(userId, songId); // Firestore에서 별점 삭제
+        onRatingChange(null);
+      } else {
+        setValue(newValue); // 새 별점 설정
+        await saveRating(userId, songId, newValue); // Firestore에 별점 저장
+        onRatingChange(newValue);
+      }
+    } catch (error) {
+      console.error("Error handling rating change:", error);
+    }
+  };
+
+  return (
+    <Rating
+      name="half-rating"
+      value={value || 0}
+      precision={0.5}
+      onChange={(event, newValue) => handleRatingChange(newValue)}
+    />
+  );
 }
 
 export default RatingStars;

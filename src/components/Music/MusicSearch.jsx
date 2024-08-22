@@ -1,8 +1,9 @@
 import React, { useState } from "react";
-import { searchMusic } from "../../services/iTunesAPI";
 import MusicList from "./MusicList";
+import { TextField, Button, Container, Grid } from "@mui/material";
+import { searchMusic } from "../../services/iTunesAPI";
 
-function MusicSearch() {
+function MusicSearch({ userId }) {
   const [query, setQuery] = useState("");
   const [results, setResults] = useState([]);
 
@@ -12,16 +13,30 @@ function MusicSearch() {
   };
 
   return (
-    <div>
-      <input
-        type="text"
-        value={query}
-        onChange={(e) => setQuery(e.target.value)}
-        placeholder="Search for music"
-      />
-      <button onClick={handleSearch}>Search</button>
-      <MusicList results={results} />
-    </div>
+    <Container maxWidth="md" sx={{ marginTop: 4 }}>
+      <Grid container spacing={2}>
+        <Grid item xs={8}>
+          <TextField
+            fullWidth
+            label="Search for music"
+            variant="outlined"
+            value={query}
+            onChange={(e) => setQuery(e.target.value)}
+          />
+        </Grid>
+        <Grid item xs={4}>
+          <Button
+            variant="contained"
+            onClick={handleSearch}
+            fullWidth
+            sx={{ height: "100%" }}
+          >
+            Search
+          </Button>
+        </Grid>
+      </Grid>
+      <MusicList results={results} userId={userId} />
+    </Container>
   );
 }
 

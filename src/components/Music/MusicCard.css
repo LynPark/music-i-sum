@@ -1,0 +1,32 @@
+.music-card {
+    margin-bottom: 20px;
+    border-radius: 10px;
+    box-shadow: 0px 4px 10px rgba(0, 0, 0, 0.1);
+  }
+  
+  .music-card img {
+    border-radius: 10px 0 0 10px;
+  }
+  
+  .music-card-content {
+    padding: 15px;
+  }
+  
+  .music-card-title {
+    font-size: 1.5rem;
+    font-weight: bold;
+    margin-bottom: 5px;
+  }
+  
+  .music-card-artist {
+    font-size: 1rem;
+    color: #555;
+    margin-bottom: 5px;
+  }
+  
+  .music-card-album {
+    font-size: 0.9rem;
+    color: #777;
+    margin-bottom: 10px;
+  }
+  
