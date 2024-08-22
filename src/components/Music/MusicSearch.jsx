@@ -14,7 +14,7 @@ function MusicSearch({ userId }) {
 
   return (
     <Container maxWidth="md" sx={{ marginTop: 4 }}>
-      <Grid container spacing={2}>
+      <Grid container spacing={2} style={{ marginBottom: "15px"}}>
         <Grid item xs={8}>
           <TextField
             fullWidth
