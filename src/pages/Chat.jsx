@@ -3,7 +3,7 @@ import Chatbot from "../components/Chat/Chatbot";
 
 function Chat() {
   return (
-    <div>
+    <div className="mp">
       <h1>Chat with our AI</h1>
       <Chatbot />
     </div>

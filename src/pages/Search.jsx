@@ -3,7 +3,7 @@ import MusicSearch from "../components/Music/MusicSearch";
 
 function Search() {
   return (
-    <div>
+    <div className="mp">
       <h1>Search Music</h1>
       <MusicSearch />
     </div>

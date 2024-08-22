@@ -31,7 +31,7 @@ function MyRatings() {
   }, [user, sortOrder]);
 
   return (
-    <div>
+    <div className="mp">
       <h1>My Rated Songs</h1>
       <select onChange={(e) => setSortOrder(e.target.value)}>
         <option value="timestamp">평가순</option>

@@ -6,7 +6,7 @@ import { Link } from "react-router-dom";
 
 function Mypage() {
   return (
-    <div>
+    <div className="mp">
       <h1>My Page</h1>
       <UserProfile />
       {/* <SongList /> */}
