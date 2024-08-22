@@ -1,5 +1,5 @@
 import React from "react";
-import UserProfile from "../components/Mypage/UserProfile";
+import UserProfile from "../components/MyPage/UserProfile";
 import MyRatings from "./MyRatings";
 
 function Mypage() {
